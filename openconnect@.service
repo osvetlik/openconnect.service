@@ -6,17 +6,19 @@ Documentation=man:openconnect(8)
 Documentation=https://gitlab.com/openconnect/openconnect
 
 [Service]
-Type=notify
+Type=simple
 PrivateTmp=true
 WorkingDirectory=/etc/openconnect
-ExecStart=/usr/sbin/openconnect --config %i.conf
+ExecStart=/bin/sh -c 'cat %i.pass | openconnect --passwd-on-stdin --config %i.conf %i'
 CapabilityBoundingSet=CAP_IPC_LOCK CAP_NET_ADMIN CAP_NET_RAW CAP_SETGID CAP_SETUID CAP_SYS_CHROOT CAP_DAC_OVERRIDE
 LimitNPROC=10
 DeviceAllow=/dev/null rw
 DeviceAllow=/dev/net/tun rw
 ProtectSystem=true
 ProtectHome=true
-KillMode=process
+KillMode=control-group
+KillSignal=SIGINT
+Restart=allways
 
 [Install]
 WantedBy=multi-user.target
