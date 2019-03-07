@@ -18,7 +18,7 @@ ProtectSystem=true
 ProtectHome=true
 KillMode=control-group
 KillSignal=SIGINT
-Restart=allways
+Restart=always
 
 [Install]
 WantedBy=multi-user.target
