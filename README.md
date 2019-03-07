@@ -11,5 +11,5 @@ there,
 6. `systemctl start openconnect@some.vpn.server`.
 
 I found no way to specify the VPN server IP/name in the configuration file
-so the service name is actually the host name (or IP address) of your VPN
+so the service name part after the @ sign is actually the host name (or IP address) of your VPN
 server.
